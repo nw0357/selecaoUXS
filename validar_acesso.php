@@ -1,10 +1,5 @@
 <?php
-    if($_POST['email']==='' || $_POST['senha']===''){
-?>
-        <script>alert('Preencha as informações corretamente.')</script>
-<?php
-        header('Location: login.php');
-    }
+
 
     require_once 'conexao.php';
     require_once 'src/pegarTabela.php';
@@ -21,13 +16,12 @@
     /* Verifica se existe um resultado no banco e, se existir, guarda as informações do usuário em uma sessão e o redireciona
     para a página correspondente. */
 
-    if(mysqli_num_rows($consulta)==0){
-
-        echo '<script type = "text/javascript"> 
-            window.location = "index.php";
-            alert("Usuário ou senha não encontrado"); 
-        </script>';
-
+    if(mysqli_num_rows($consulta)==0){?>
+        <script>
+            alert("Informações fornecidas inválidas.")
+            window.location="login.php"
+        </script>
+    <?php
     }else{
 
         $linha = mysqli_fetch_array($consulta, MYSQLI_ASSOC);

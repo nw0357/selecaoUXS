@@ -6,34 +6,40 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Página Inicial</title>
     <link rel="stylesheet" href="materialize/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <nav>
-
+    <a href="#" class="brand-logo right"><img src="src/img/logo.png" alt=""></a>
   </nav>
 
   <div class="row">
       <div class="col s3">
-        <ul>
+        <ul class="collection">
           <?php if(isset($_SESSION['id_admin'])):  ?>
+
             <li><a href="index.php" class="left-align red-text"><i class="material-icons">home</i>Início</a></li>
-            <li><a href="admin/ger_usuarios.php" class="left-align"><i class="material-icons">person</i>Gerenciar usuários</a></li>
-            <li><a href="admin/ger_cardapio.php" class="left-align"><i class="material-icons">restaurant_menu</i>Gerenciar cardápio</a></li>
-            <li class="left-align"><a href="sair.php"><i class="material-icons">logout</i>Sair</a></li>
+            <li><a href="admin/ger_usuarios.php" class="left-align red-text" style="font-size:25px;"><i class="material-icons">person</i>Gerenciar usuários</a></li>
+            <li><a href="admin/ger_cardapio.php" class="left-align red-text" style="font-size:25px;"><i class="material-icons">restaurant_menu</i>Gerenciar cardápio</a></li>
+            <li><a href="sair.php" class="left-align red-text" style="font-size:25px;"><i class="material-icons">logout</i>Sair</a></li>
+            
           <?php elseif(isset($_SESSION['id_entregador'])): ?>
-            <li><a href="index.php" class="left-align red-text red-text"><i class="material-icons">home</i>Início</a></li>
-            <li><a href="admin/ger_usuarios.php" class="left-align red-text"><i class="material-icons">person</i>Perfil</a></li>
-            <li><a href="admin/ger_cardapio.php" class="left-align red-text"><i class="material-icons"></i>Buscar entregas</a></li>
-            <li><a href="sair.php" class="left-align"><i class="material-icons">logout</i>Sair</a></li>
+
+            <li><a href="index.php" class="left-align red-text red-text" style="font-size:25px;"><i class="material-icons">home</i>Início</a></li>
+            <li><a href="admin/ger_usuarios.php" class="left-align red-text" style="font-size:25px;"><i class="material-icons">person</i>Perfil</a></li>
+            <li><a href="admin/ger_cardapio.php" class="left-align red-text" style="font-size:25px;"><i class="material-icons"></i>Buscar entregas</a></li>
+            <li><a href="sair.php" class="left-align red-text" style="font-size:25px;"><i class="material-icons">logout</i>Sair</a></li>
+
           <?php elseif(isset($_SESSION['id_cliente'])): ?>
-            <li><a href="index.php" class="left-align red-text"><i class="material-icons">home</i>Início</a></li>
-            <li><a href="admin/ger_usuarios.php" class="left-align red-text"><i class="material-icons">person</i>Perfil</a></li>
-            <li><a href="sair.php" class="left-align red-text"><i class="material-icons">logout</i>Sair</a></li>
+
+            <li><a href="index.php" class="left-align red-text" style="font-size:25px;"><i class="material-icons">home</i>Início</a></li>
+            <li><a href="admin/ger_usuarios.php" class="left-align red-text" style="font-size:25px;"><i class="material-icons">person</i>Perfil</a></li>
+            <li><a href="sair.php" class="left-align red-text" style="font-size:25px;"><i class="material-icons">logout</i>Sair</a></li>
+
           <?php else: ?>
-            <li><a href="login.php" class="left-align red-text">Entrar</a></li>
+            <li><a href="login.php" class="left-align red-text" style="font-size:25px;"><i class="material-icons">login</i>Entrar</a></li>
           <?php endif; ?>
         </ul>
       </div>
