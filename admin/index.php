@@ -18,7 +18,11 @@
   <div class="row">
       <div class="col s3">
         <ul class="section table-of-contents">
-            <li><a href="login.php" class="left-align red-text">Entrar</a></li>
+            <li><a href="index.php" class="left-align red-text">Início</a></li>
+            <li><a href="ger_usuarios.php" class="left-align red-text">Gerenciar usuários</a></li>
+            <li><a href="ger_cardapio.php" class="left-align red-text">Gerenciar cardápio</a></li>
+            <li><a href="ger_cardapio.php" class="left-align red-text">Perfil</a></li>
+            <li><a href="../sair.php" class="left-align red-text">Sair</a></li>
         </ul>
       </div>
 
@@ -27,7 +31,7 @@
           <h2>Cardápio</h2>
           <?php
           require_once 'conexao.php';
-          try{
+
             $consulta=mysqli_query($conn, 'SELECT * FROM tb_prato ORDER BY nome');
             $resultado=mysqli_fetch_all($consulta, MYSQLI_ASSOC);
             if(mysqli_num_rows($consulta)>0):
@@ -54,9 +58,6 @@
           <?php
               endforeach;
             endif;
-          } catch (mysqli_sql_exception $e) {
-            echo $e;
-          }
           ?>
         </div>
       </div>

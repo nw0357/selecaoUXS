@@ -1,5 +1,9 @@
 <?php
+session_start();
 
+if(!isset($_SESSION['id_cliente'])):
+    header('Location: ../login.php');
+endif;
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
-    <link rel="stylesheet" href="materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="../materialize/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -18,7 +22,9 @@
   <div class="row">
       <div class="col s3">
         <ul class="section table-of-contents">
-            <li><a href="login.php" class="left-align red-text">Entrar</a></li>
+            <li><a href="index.php" class="left-align red-text">Início</a></li>
+            <li><a href="perfil.php" class="left-align red-text">Perfil</a></li>
+            <li><a href="../sair.php" class="left-align red-text">Sair</a></li>
         </ul>
       </div>
 
@@ -26,7 +32,8 @@
         <div class="col s12 m7" id="cardapio">
           <h2>Cardápio</h2>
           <?php
-          require_once 'conexao.php';
+          require_once '../conexao.php';
+
           try{
             $consulta=mysqli_query($conn, 'SELECT * FROM tb_prato ORDER BY nome');
             $resultado=mysqli_fetch_all($consulta, MYSQLI_ASSOC);
@@ -35,7 +42,7 @@
           ?>
               <div class="card horizontal grey darken-4">
                 <div class="card-image">
-                  <img src="src/img_pratos/<?=$linha['nome']?>.png">
+                  <img src="../src/img_pratos/<?=$linha['nome']?>.png">
                 </div>
                 <div class="card-stacked">
                   <div class="card-content">
@@ -54,13 +61,13 @@
           <?php
               endforeach;
             endif;
-          } catch (mysqli_sql_exception $e) {
+        } catch (mysqli_sql_exception $e) {
             echo $e;
-          }
+        }
           ?>
         </div>
       </div>
     </div>
-  <script src="materialize/js/materialize.min.js"></script>
+  <script src="../materialize/js/materialize.min.js"></script>
 </body>
 </html>

@@ -1,9 +1,8 @@
 <?
 
-foreach($_SESSION as $dado):
-    unset($dado);
-endforeach;
+session_destroy();
 
-session_abort();
-
-header('Locatiion: index.php');
+?>
+<script>
+    window.location="index.php"
+</script>

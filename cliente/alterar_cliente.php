@@ -1,6 +1,8 @@
 <?
-require_once 'conexao.php';
+require_once '../conexao.php';
+
 try{
+    $id=$_GET['id'];
     $nome=$_POST['nome'];
     $cpf=$_POST['cpf'];
     $cep=$_POST['cep'];
@@ -14,14 +16,14 @@ try{
     $email=$_POST['email'];
     $senha=$_POST['senha'];
 
-    $sql="INSERT INTO tb_cliente VALUES(DEFAULT, $nome, $cpf, $cep, $estado, $cidade, $bairro, $rua, $numero_residencia, $complemento, $telefone, $email, $senha, DEFAULT)";
+    $sql="UPDATE tb_cliente SET nome='$nome', cpf='$cpf', cep='$cep', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero_residencia='$numero_residencia', complemento='$complemento', telefone='$telefone', email='$email', senha='$senha' WHERE id_cliente='$id'g";
 
     $consulta=mysqli_query($conn, $sql);
 
     if($consulta):?>
         <script>
-        alert('Usuário cadastrado!')
-        window.location='login.php'
+        alert('Dados atualizados!')
+        window.location='perfil.php'
         </script>
     <?
 endif;
